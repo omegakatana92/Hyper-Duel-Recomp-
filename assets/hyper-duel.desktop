@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hyper Duel
+Comment=Native Sega Saturn recompilation
+Exec=hyperduel-launcher
+Icon=hyper-duel
+Terminal=false
+Categories=Game;ArcadeGame;
+StartupWMClass=hyperduel-launcher

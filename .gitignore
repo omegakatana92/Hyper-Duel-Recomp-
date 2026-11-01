@@ -1,0 +1,38 @@
+# The player's disc image and anything extracted from it: never committed.
+disc/
+roms/
+*.cue
+*.bin
+*.iso
+*.chd
+*.ccd
+*.mds
+*.zip
+*.7z
+
+# A BIOS image, saves, settings and logs: personal/local state.
+bios/
+*.bios
+saves/
+backup.bin
+settings.ini
+*.log
+
+# Generated from the game by the toolkit: never committed or shipped.
+work/
+build/
+dist/
+movies/
+captures/
+*.state
+*.raw
+*.wav
+*.hash
+*.hashes
+
+# Developer-local configuration (an absolute disc path, for example).
+local.mk
+
+# Tool output.
+__pycache__/
+.DS_Store
