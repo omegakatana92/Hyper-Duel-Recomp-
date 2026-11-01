@@ -70,7 +70,9 @@ the toolkit's macOS bundle target in satrecomp 0.2.0, not an AppImage target.
 For Desktop Mode, make the AppImage executable and run it, or add it to Steam. For
 Gaming Mode, add it as a non-Steam game in Desktop Mode, then launch it from the Deck;
 the launcher opens full screen when it detects gamescope/Steam Game Mode. Controller
-bindings use SDL3 gamepads. Actual Steam Deck hardware validation is still pending.
+bindings use SDL3 gamepads. The project owner confirmed the AppImage on Steam Deck
+(Desktop and Gaming Mode, sound through gameplay); full-stage testing is still a
+separate, longer check.
 
 The first build is interpreter-only. Translated code is generated later from a block
 recording; the current recorded paths are fully translated. Generated code is large

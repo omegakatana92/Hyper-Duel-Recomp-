@@ -82,7 +82,8 @@ The Steam Deck candidate is:
 It is built on Ubuntu 22.04 (glibc 2.35, GCC 11.4) with static SDL3 3.4.16. Its ELF
 symbols require at most `GLIBC_2.34`; it bundles `libstdc++`, `libgcc_s` and `libz`,
 and uses the host's glibc, Mesa/graphics drivers and X11/Wayland/audio libraries.
-The AppImage is delivered for Steam Deck testing but is not published.
+The project owner confirmed the AppImage on Steam Deck (sound through gameplay,
+Desktop and Gaming Mode); the release asset is published with the Windows ZIP.
 
 ## Not yet validated
 
@@ -98,9 +99,9 @@ The AppImage is delivered for Steam Deck testing but is not published.
 - Reference verification against Ymir: the unpublished reference patch was not found
   locally, so no `make verify` was claimed or performed.
 - A windowed session with the real SDL audio device, frame pacing and audio underruns.
-- Actual Steam Deck hardware: Gaming Mode/gamescope, Deck controller bindings, Deck
-  audio device and long interactive play. The AppImage itself was built and tested in
-  WSL2 only.
+- Long interactive play through all stages/bosses and an in-game CD-DA loop boundary.
+  Steam Deck sound-through-gameplay and Desktop/Gaming Mode were confirmed by the
+  project owner; this is not a full-game completion claim.
 
 ## Known limitations in the toolkit changes
 

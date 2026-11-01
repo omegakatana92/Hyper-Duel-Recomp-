@@ -94,8 +94,8 @@ Results:
   the external CUE as verified; `AppRun --play` launched the port with external
   saves/settings paths. A path containing spaces and `/tmp` as working directory also
   worked.
-- Actual Steam Deck hardware, Gaming Mode/gamescope, Deck controller and Deck audio
-  were not available and remain unvalidated.
+- The project owner confirmed the AppImage on Steam Deck: sound through gameplay,
+  Desktop and Gaming Mode. Full-stage/boss and long-loop testing remains separate.
 
 ### Validation reached
 
