@@ -40,7 +40,7 @@ cp assets/hyper-duel.desktop "$APPDIR/usr/share/applications/hyper-duel.desktop"
 needed=$(for exe in "$B/$GAME" "$B/$GAME-launcher"; do
     ldd "$exe" 2>/dev/null
 done | awk '{print $1}' | sort -u)
-for lib in libstdc++.so.6 libgcc_s.so.1 libatomic.so.1; do
+for lib in libstdc++.so.6 libgcc_s.so.1 libatomic.so.1 libz.so.1; do
     if printf '%s\n' "$needed" | grep -qx "$lib"; then
         p=$(ldconfig -p 2>/dev/null | awk -v n="$lib" '$1 == n {print $NF; exit}')
         [ -n "$p" ] && cp -L "$p" "$APPDIR/usr/lib/"
