@@ -78,6 +78,25 @@ Results:
   and played the same CD-DA ranges. The Windows package was rebuilt from it and tested
   from a path with spaces.
 
+### Linux and Steam Deck AppImage
+
+- Built in WSL2 Ubuntu 22.04 with GCC 11.4, CMake 4.4.4, Ninja 1.10.1 and static
+  SDL 3.4.16. The launcher and port are x86_64 ELF PIE; their highest required glibc
+  symbol is `GLIBC_2.34` (host glibc 2.35), older than current SteamOS.
+- The AppImage bundles the port, launcher, original icon, desktop entry, licenses,
+  `libstdc++`, `libgcc_s` and `libz`. SDL3 is static. It does not bundle glibc,
+  graphics drivers, or X11/Wayland/audio system libraries.
+- Linux `check.sh` passed 6,000 frames on `saturn3` and `play3`; 20 Linux Saturn
+  screenshots were byte-identical to Windows. Saturn BGM output/source correlation
+  was 0.5445. Arcade audio was byte-identical to Windows.
+- AppImage `--appimage-extract`, direct FUSE startup, and
+  `--appimage-extract-and-run` all worked. The launcher opened under Xvfb and showed
+  the external CUE as verified; `AppRun --play` launched the port with external
+  saves/settings paths. A path containing spaces and `/tmp` as working directory also
+  worked.
+- Actual Steam Deck hardware, Gaming Mode/gamescope, Deck controller and Deck audio
+  were not available and remain unvalidated.
+
 ### Validation reached
 
 - Screenshots: Technosoft logo (frame 300), S-FORGEL screen (900-1200), Hyper Duel

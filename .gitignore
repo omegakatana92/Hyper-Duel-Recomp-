@@ -29,6 +29,7 @@ captures/
 *.wav
 *.hash
 *.hashes
+*.AppImage
 
 # Developer-local configuration (an absolute disc path, for example).
 local.mk

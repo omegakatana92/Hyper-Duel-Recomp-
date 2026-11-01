@@ -43,6 +43,14 @@ Updated: 2026-11-01 (local build)
 | Saturn transitions | `saturn4` 12,000 frames | tracks 16 → 2 → 36; BGM pauses/resumes with the game's CD commands |
 | Arcade BGM/SFX regression | `arcade4` audio dump | byte-identical to the pre-patch Arcade audio; SCSP BGM and SFX unchanged |
 | Graphics/input regression | 20 Saturn + 80 Arcade PNGs | all identical to the pre-BGM-fix build |
+| Linux build | Ubuntu 22.04 WSL2, GCC 11.4, static SDL3 3.4.16 | port + launcher build; max ELF symbol `GLIBC_2.34` |
+| Linux checks | `check.sh 6000` on `saturn3` and `play3` | interpreter == translated; two runs equal |
+| Linux BGM | `saturn3` audio/source dumps | same FAD ranges; output/source correlation 0.5445 |
+| Linux Arcade | `arcade4` audio dump | byte-identical to the Windows Arcade audio |
+| AppImage extract/run | `--appimage-extract` and `--appimage-extract-and-run` | both work; 600-frame boot 100% recompiled |
+| AppImage BGM | extracted bundled port, `saturn3` | `PlaySectors FAD 112978..115679`; correlation 0.5445 |
+| AppImage launcher | `AppRun --screenshot` under Xvfb | disc shown as verified; Play enabled |
+| AppImage launch-to-runtime | `AppRun --play` under Xvfb | port launched with external CUE, saves and settings paths |
 
 The `make check` runs used `DISC` pointing at the local cue. With the development
 toolkit (`SR=../satrecomp`) `make check` passes. With the synced copy, the plain
@@ -66,6 +74,16 @@ The package was run from a path containing spaces with a working directory diffe
 from the executable's; Saturn CD-DA started (track 16 FAD 112978..115679) and Arcade
 audio was byte-identical to the pre-fix build.
 
+The Steam Deck candidate is:
+
+- `dist/Hyper-Duel-v0.1.0-SteamDeck-x86_64.AppImage`
+- SHA-256: `1113E77F8F8DFD2DB1EC298F57A339BA11CAF9B48A6A8868C684F1D5C6DCF70B`
+
+It is built on Ubuntu 22.04 (glibc 2.35, GCC 11.4) with static SDL3 3.4.16. Its ELF
+symbols require at most `GLIBC_2.34`; it bundles `libstdc++`, `libgcc_s` and `libz`,
+and uses the host's glibc, Mesa/graphics drivers and X11/Wayland/audio libraries.
+The AppImage is delivered for Steam Deck testing but is not published.
+
 ## Not yet validated
 
 - Full playthroughs of all eight stages, bosses, endings, both loops and both modes.
@@ -80,7 +98,9 @@ audio was byte-identical to the pre-fix build.
 - Reference verification against Ymir: the unpublished reference patch was not found
   locally, so no `make verify` was claimed or performed.
 - A windowed session with the real SDL audio device, frame pacing and audio underruns.
-- Linux and Steam Deck builds; no Linux environment or AppImage test was performed.
+- Actual Steam Deck hardware: Gaming Mode/gamescope, Deck controller bindings, Deck
+  audio device and long interactive play. The AppImage itself was built and tested in
+  WSL2 only.
 
 ## Known limitations in the toolkit changes
 
